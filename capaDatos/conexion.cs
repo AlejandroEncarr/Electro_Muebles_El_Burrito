@@ -398,6 +398,31 @@ namespace capaDatos
                 cmd.ExecuteNonQuery();
             }
         }
+        public static void InsertarFiduciario( int ventaID, decimal montoTotal,decimal montoPagado, string estado,
+            decimal montoFinanciado, int cuotas, int plazo, decimal interesAnual,  DateTime fechaInicio,bool activo)
+        {
+            using (SqlConnection cn = new SqlConnection(datasource))
+            {
+                SqlCommand cmd = new SqlCommand("sp_InsertarFiduciario", cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@VentaID", ventaID);
+                cmd.Parameters.AddWithValue("@MontoTotal", montoTotal);
+                cmd.Parameters.AddWithValue("@MontoPagado", montoPagado);
+                cmd.Parameters.AddWithValue("@Estado", estado);
+                cmd.Parameters.AddWithValue("@MontoFinanciado", montoFinanciado);
+                cmd.Parameters.AddWithValue("@Cuotas", cuotas);
+                cmd.Parameters.AddWithValue("@Plazo", plazo);
+                cmd.Parameters.AddWithValue("@InteresAnual", interesAnual);
+                cmd.Parameters.AddWithValue("@FechaInicio", fechaInicio);
+                cmd.Parameters.AddWithValue("@Activo", activo);
+
+                cn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+
 
         #endregion
 

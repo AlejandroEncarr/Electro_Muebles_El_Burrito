@@ -34,14 +34,14 @@ namespace capaPresentacion.UserControl
             txtCuotasMensuales.Enabled = esFiduciario;
             txtPlazoMeses.Enabled = esFiduciario;
             txtInteresAnual.Enabled = esFiduciario;
-            FechaInicioM.Enabled = esFiduciario;
-            FechaFinM.Enabled = esFiduciario;
+            FechaInicio.Enabled = esFiduciario;
+            txtFechaVencimiento.Enabled = esFiduciario;
 
             // Campos Layaway
-            txtMontoTotalL.Enabled = esLayaway;
-            txtPagoInicialL.Enabled = esLayaway;
-            txtPagosPeriodicosL.Enabled = esLayaway;
-            dtpFechaLimiteL.Enabled = esLayaway;
+            // txtMontoTotalL.Enabled = esLayaway;
+            txtPagoInicial.Enabled = esLayaway;
+            txtPagosPeriodicos.Enabled = esLayaway;
+            txtFechaLimite.Enabled = esLayaway;
 
         }
 
@@ -77,6 +77,97 @@ namespace capaPresentacion.UserControl
         }
 
         private void GuaradarVentas_Click(object sender, EventArgs e)
+        {
+            string metodopago = "";
+
+            if (Contado.Checked)
+            {
+                metodopago = "Contado";
+            }
+            else if (Apartado.Checked)
+            {
+                metodopago = "Layaway";
+            }
+            else if (Fiduciario.Checked)
+            {
+                metodopago = "Fiduciario";
+            }
+
+            DateTime fechaVenta = DateTime.Today;
+
+            int ventaID = Venta.InsertarVenta(
+                Convert.ToInt32(txtClienteId.Text),
+                Convert.ToInt32(txtIdProducto.Text),
+                Convert.ToInt32(txtVendedorID.Text),
+                fechaVenta,
+                metodopago,
+                Convert.ToDecimal(txtSubTotal.Text),
+                Convert.ToDecimal(txtITBIS.Text),
+                Convert.ToDecimal(txtMontoTotal.Text)
+            );
+
+            // Insertar método de pago correspondiente
+            if (Contado.Checked)
+            {
+                // Venta.InsertarMetodoPagoContado(ventaID, tipoMetodo, fechaPago, montoTotal);
+            }
+            else if (Apartado.Checked)
+            {
+
+                // Venta.InsertarMetodoPagoLayaway(ventaID, 
+            }
+            else if (Fiduciario.Checked)
+            {
+
+            }
+
+            MessageBox.Show("Contrato guardado correctamente.");
+
+        }
+
+        private void txtProductoID_TextChanged(object sender, EventArgs e)
+        {
+            //Este es el textbox en el cual pongo el id del prodcuto
+            // Validar que el texto sea un número válido
+            if (int.TryParse(txtIdProducto.Text, out int productoId))
+            {
+                Producto producto = new Producto();
+                DataTable dt = producto.ObtenerProductoPorId(productoId);
+
+                if (dt.Rows.Count > 0)
+                {
+                    DataRow fila = dt.Rows[0];
+
+                    txtMontoTotal.Text = fila["Precio"].ToString();
+                    if (decimal.TryParse(txtMontoTotal.Text, out decimal precio))
+                    {
+                        decimal itbis = precio * 0.18m;
+                        decimal totalSinItbis = precio - itbis;
+
+                        txtITBIS.Text = itbis.ToString("N2");       // Formato con 2 decimales
+                        txtSubTotal.Text = totalSinItbis.ToString("N2");
+                    
+
+                    }
+                    else
+                    {
+                        txtITBIS.Text = "";
+                        txtMontoTotal.Text = "";
+                    }
+                 
+                }
+                else
+                {
+                    //LimpiarCamposProducto();
+                }
+            }
+            else
+            {
+                //LimpiarCamposProducto();
+            }
+        }
+
+        private void txtVendedorID_TextChanged(object sender, EventArgs e)
         {
 
         }
