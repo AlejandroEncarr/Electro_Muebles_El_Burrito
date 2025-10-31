@@ -375,9 +375,15 @@ namespace capaDatos
             }
         }
 
-        public static void InsertarLayaway(int ventaID, string tipoMetodo, DateTime fechaInicio, DateTime fechaFinal,
-                                   decimal montoTotal, decimal montoPagado, decimal montoPendiente,
-                                   string estado, string pagosPeriodicos)
+        public static void InsertarLayaway(int ventaID,
+     string tipoMetodo,
+     DateTime fechaInicio,
+     DateTime fechaFinal,
+     decimal montoTotal,
+     decimal montoInicial,
+     decimal montoPagado,
+     string estado,
+     string pagosPeriodicos)
         {
             using (SqlConnection cn = new SqlConnection(datasource))
             {
@@ -389,8 +395,8 @@ namespace capaDatos
                 cmd.Parameters.AddWithValue("@FechaInicio", fechaInicio);
                 cmd.Parameters.AddWithValue("@FechaFinal", fechaFinal);
                 cmd.Parameters.AddWithValue("@MontoTotal", montoTotal);
-                cmd.Parameters.AddWithValue("@MontoPagado", montoPagado);
-                cmd.Parameters.AddWithValue("@MontoPendiente", montoPendiente);
+                cmd.Parameters.AddWithValue("@MontoInicial", montoInicial);
+                cmd.Parameters.AddWithValue("@MontoPadado", montoPagado); // ← cuidado con el nombre del parámetro
                 cmd.Parameters.AddWithValue("@Estado", estado);
                 cmd.Parameters.AddWithValue("@PagosPeriodicos", pagosPeriodicos);
 
@@ -398,8 +404,17 @@ namespace capaDatos
                 cmd.ExecuteNonQuery();
             }
         }
-        public static void InsertarFiduciario( int ventaID, decimal montoTotal,decimal montoPagado, string estado,
-            decimal montoFinanciado, int cuotas, int plazo, decimal interesAnual,  DateTime fechaInicio,bool activo)
+
+        public static void InsertarFiduciario(int ventaID,
+     decimal montoTotal,
+     decimal montoPagado,
+     string estado,
+     decimal montoFinanciado,
+     decimal cuotasMensuales,
+     int plazo,
+     decimal interesAnual,
+     DateTime fechaInicio,
+     DateTime fechaVencimiento)
         {
             using (SqlConnection cn = new SqlConnection(datasource))
             {
@@ -411,16 +426,17 @@ namespace capaDatos
                 cmd.Parameters.AddWithValue("@MontoPagado", montoPagado);
                 cmd.Parameters.AddWithValue("@Estado", estado);
                 cmd.Parameters.AddWithValue("@MontoFinanciado", montoFinanciado);
-                cmd.Parameters.AddWithValue("@Cuotas", cuotas);
+                cmd.Parameters.AddWithValue("@CuotasMensuales", cuotasMensuales);
                 cmd.Parameters.AddWithValue("@Plazo", plazo);
                 cmd.Parameters.AddWithValue("@InteresAnual", interesAnual);
                 cmd.Parameters.AddWithValue("@FechaInicio", fechaInicio);
-                cmd.Parameters.AddWithValue("@Activo", activo);
+                cmd.Parameters.AddWithValue("@FechaVencimiento", fechaVencimiento);
 
                 cn.Open();
                 cmd.ExecuteNonQuery();
             }
         }
+
 
 
 

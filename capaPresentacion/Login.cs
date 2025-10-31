@@ -52,7 +52,7 @@ namespace capaPresentacion
                 bool validar = verificar.ValidarLogin(usuario, contrasena);
                 if (validar)
                 {
-                    Menu menu = new Menu();
+                    txtFechaVencimiento menu = new txtFechaVencimiento();
                     menu.Show();
                     UsuarioT.Text = "";
                     ClaveT.Text = "";
@@ -129,7 +129,7 @@ namespace capaPresentacion
                 bool validar = verificar.ValidarLogin(usuario, contrasena);
                 if (validar)
                 {
-                    Menu menu = new Menu();
+                    txtFechaVencimiento menu = new txtFechaVencimiento();
                     menu.Show();
                     UsuarioT.Text = "";
                     ClaveT.Text = "";
@@ -176,7 +176,7 @@ namespace capaPresentacion
                 bool validar = verificar.ValidarLogin(usuario, contrasena);
                 if (validar)
                 {
-                    Menu menu = new Menu();
+                    txtFechaVencimiento menu = new txtFechaVencimiento();
                     menu.Show();
                     UsuarioT.Text = "";
                     ClaveT.Text = "";

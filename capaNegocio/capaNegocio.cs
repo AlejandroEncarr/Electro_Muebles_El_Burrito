@@ -233,19 +233,38 @@ namespace capaNegocio
             conexion.InsertarPagoContado(ventaID, tipoMetodo, fechaPago, montoTotal);
         }
 
-        public void RegistrarLayaway(int ventaID, string tipoMetodo, DateTime fechaInicio, DateTime fechaFinal,
-                                     decimal montoTotal, decimal montoPagado, decimal montoPendiente,
-                                     string estado, string pagosPeriodicos)
+        public static void InsertarMetodoPagoLayaway(int ventaID,
+    string tipoMetodo,
+    DateTime fechaInicio,
+    DateTime fechaFinal,
+    decimal montoTotal,
+    decimal montoInicial,
+    decimal montoPagado,
+    string estado,
+    string pagosPeriodicos)
         {
-            conexion.InsertarLayaway(ventaID, tipoMetodo, fechaInicio, fechaFinal, montoTotal, montoPagado, montoPendiente, estado, pagosPeriodicos);
+            conexion.InsertarLayaway(ventaID, tipoMetodo, fechaInicio, fechaFinal,
+                                     montoTotal, montoInicial, montoPagado,
+                                     estado, pagosPeriodicos);
         }
 
-        public void RegistrarFiduciario(int ventaID, decimal montoTotal, decimal montoPagado, string estado,
-                                        decimal montoFinanciado, int cuotas, int plazo, decimal interesAnual,
-                                        DateTime fechaInicio, bool activo)
+        public static void InsertarMetodoPagoFiduciario(int ventaID,
+    decimal montoTotal,
+    decimal montoPagado,
+    string estado,
+    decimal montoFinanciado,
+    decimal cuotasMensuales,
+    int plazo,
+    decimal interesAnual,
+    DateTime fechaInicio,
+    DateTime fechaVencimiento)
         {
-            conexion.InsertarFiduciario(ventaID, montoTotal, montoPagado, estado, montoFinanciado, cuotas, plazo, interesAnual, fechaInicio, activo);
+            conexion.InsertarFiduciario(ventaID, montoTotal, montoPagado, estado,
+                                        montoFinanciado, cuotasMensuales, plazo,
+                                        interesAnual, fechaInicio, fechaVencimiento);
         }
+
+
     }
 
 

@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace capaPresentacion
 {
-    public partial class Menu : Form
+    public partial class txtFechaVencimiento : Form
     {
-        public Menu()
+        public txtFechaVencimiento()
         {
             InitializeComponent();
         }
@@ -179,7 +179,7 @@ namespace capaPresentacion
 
         private void guna2Button19_Click(object sender, EventArgs e)
         {
-            Contrato contrato = new Contrato();
+            txtInteres contrato = new txtInteres();
             contrato.Show();
         }
     }

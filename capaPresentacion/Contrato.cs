@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace capaPresentacion
 {
-    public partial class Contrato : Form
+    public partial class txtInteres : Form
     {
-        public Contrato()
+        public txtInteres()
         {
             InitializeComponent();
 

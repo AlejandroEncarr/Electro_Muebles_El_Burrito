@@ -1,6 +1,6 @@
 ﻿namespace capaPresentacion
 {
-    partial class Contrato
+    partial class txtInteres
     {
         /// <summary>
         /// Required designer variable.
@@ -82,7 +82,7 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges52 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges53 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges54 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Contrato));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(txtInteres));
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges55 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges56 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges57 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -1337,7 +1337,7 @@
             GuardarContraro.Text = "Guardar";
             GuardarContraro.Click += GuardarContraro_Click;
             // 
-            // Contrato
+            // txtInteres
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -1425,7 +1425,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(txtNombreComercial);
-            Name = "Contrato";
+            Name = "txtInteres";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Contrato";
             Load += Contrato_Load;

@@ -1,6 +1,6 @@
 ﻿namespace capaPresentacion
 {
-    partial class Menu
+    partial class txtFechaVencimiento
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(txtFechaVencimiento));
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -617,7 +617,7 @@
             pictureBox2.TabStop = false;
             pictureBox2.Click += pictureBox2_Click;
             // 
-            // Menu
+            // txtFechaVencimiento
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -631,7 +631,7 @@
             Controls.Add(panel1);
             Controls.Add(MenuPanel);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "Menu";
+            Name = "txtFechaVencimiento";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Menu";
             Load += Menu_Load;
