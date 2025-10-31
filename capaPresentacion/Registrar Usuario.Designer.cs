@@ -64,7 +64,6 @@
             RegistrarUsuario.Name = "RegistrarUsuario";
             RegistrarUsuario.Size = new Size(94, 29);
             RegistrarUsuario.TabIndex = 3;
-            RegistrarUsuario.Text = "Registrar";
             RegistrarUsuario.UseVisualStyleBackColor = true;
             RegistrarUsuario.Click += button1_Click;
             // 
@@ -76,7 +75,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(894, 512);
+            ClientSize = new Size(999, 512);
             Controls.Add(RegistrarUsuario);
             Controls.Add(IdRoll);
             Controls.Add(Contrasena);
