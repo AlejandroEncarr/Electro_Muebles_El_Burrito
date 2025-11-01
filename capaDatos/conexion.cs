@@ -87,9 +87,10 @@ namespace capaDatos
 
         //Metodo para insetar un producto
 
-        public static void InsertarProducto(string Nombre, string Categoria, decimal Precio, int Stock, string Caracteristicas, string Marca, string Color, string Modelo, string NumeroSerie, int GarantiaMeses)
+        public static void InsertarProducto(string Nombre, string Categoria, decimal Precio,
+                                    string Caracteristicas, string Marca, string Color,
+                                    string Modelo, string NumeroSerie, int GarantiaMeses, bool Estado)
         {
-
             using (SqlConnection conexion = new SqlConnection(datasource))
             {
                 SqlCommand cmd = new SqlCommand("InsertarProducto", conexion);
@@ -98,20 +99,20 @@ namespace capaDatos
                 cmd.Parameters.AddWithValue("@Nombre", Nombre);
                 cmd.Parameters.AddWithValue("@Categoria", Categoria);
                 cmd.Parameters.AddWithValue("@Precio", Precio);
-                cmd.Parameters.AddWithValue("@Stock", Stock);
                 cmd.Parameters.AddWithValue("@Caracteristicas", Caracteristicas);
                 cmd.Parameters.AddWithValue("@Marca", Marca);
                 cmd.Parameters.AddWithValue("@Color", Color);
                 cmd.Parameters.AddWithValue("@Modelo", Modelo);
                 cmd.Parameters.AddWithValue("@NumeroSerie", NumeroSerie);
                 cmd.Parameters.AddWithValue("@GarantiaMeses", GarantiaMeses);
+                cmd.Parameters.AddWithValue("@Estado", Estado);
 
                 conexion.Open();
                 cmd.ExecuteNonQuery();
                 conexion.Close();
-
             }
         }
+
 
         #endregion
 
@@ -325,7 +326,7 @@ namespace capaDatos
         #endregion
 
 
-        #region
+        #region "Metodos"
 
         public static int InsertarVenta(int clienteID, int productoID, int idVendedor, DateTime fechaVenta,
                                 string metodoPago, decimal subtotal, decimal itbis, decimal total)
@@ -437,10 +438,69 @@ namespace capaDatos
             }
         }
 
+        #endregion
 
 
+        #region
+
+        public static DataTable ObtenerVentaPorID(int ventaID)
+        {
+            using (SqlConnection cn = new SqlConnection(datasource))
+            {
+                SqlCommand cmd = new SqlCommand("sp_ObtenerVentaPorID", cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@VentaID", ventaID);
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                return dt;
+            }
+        }
+
+
+        public static void InsertarPago(int ventaID, decimal montoPagado, decimal mora,
+                                decimal montoPendiente, string fechaPago, string metodoPago)
+        {
+            using (SqlConnection cn = new SqlConnection(datasource))
+            {
+                SqlCommand cmd = new SqlCommand("sp_InsertarPago", cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@VentaID", ventaID);
+                cmd.Parameters.AddWithValue("@MontoPagado", montoPagado);
+                cmd.Parameters.AddWithValue("@Mora", mora);
+                cmd.Parameters.AddWithValue("@MontoPendiente", montoPendiente);
+                cmd.Parameters.AddWithValue("@FechaPago", fechaPago);
+                cmd.Parameters.AddWithValue("@MetodoPago", metodoPago);
+
+                cn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
 
         #endregion
+
+        public class VentasDAL
+        {
+            public int ObtenerCantidadVentasDelDia()
+            {
+                int cantidad = 0;
+                string query = @"SELECT COUNT(*) FROM Ventas WHERE CAST(FechaVenta AS DATE) = CAST(GETDATE() AS DATE)";
+
+                using (SqlConnection conn = new SqlConnection(datasource))
+                {
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    conn.Open();
+                    cantidad = (int)cmd.ExecuteScalar();
+                }
+
+                return cantidad;
+            }
+        }
+
+
 
     }
 }

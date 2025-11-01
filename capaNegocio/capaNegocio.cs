@@ -39,20 +39,21 @@ namespace capaNegocio
         //  Instancia de la clase en la cual se encuentra la conexion 
         private conexion con = new conexion();
 
-        public string InsertarProducto(string Nombre, string Categoria, decimal Precio, int Stock, string Caracteristicas, string Marca, string Color, string Modelo, string NumeroSerie, int GarantiaMeses)
+        public string InsertarProducto(string Nombre, string Categoria, decimal Precio,
+                                string Caracteristicas, string Marca, string Color,
+                                string Modelo, string NumeroSerie, int GarantiaMeses, bool Estado)
         {
             try
             {
-                conexion.InsertarProducto(Nombre, Categoria, Precio, Stock, Caracteristicas, Marca, Color, Modelo, NumeroSerie, GarantiaMeses);
-                return "Producto agregado con exito.";
+                conexion.InsertarProducto(Nombre, Categoria, Precio, Caracteristicas, Marca, Color, Modelo, NumeroSerie, GarantiaMeses, Estado);
+                return "Producto agregado con éxito.";
             }
             catch (Exception ex)
             {
                 return $"Error al agregar el producto: {ex.Message}";
             }
-
-
         }
+
     }
 
     #endregion
@@ -195,21 +196,21 @@ namespace capaNegocio
             conexion.InsertarLayaway(ventaID, tipoMetodo, fechaInicio, fechaFinal, montoTotal, montoInicial, montoPagado, estado, pagosPeriodicos);
         }
 
-      /*  public static void InsertarMetodoFiduciario(int ventaID,
-               decimal montoTotal,
-               decimal montoPagado,
-               string estado,
-               decimal montoFinanciado,
-               decimal cuotasMensuales,
-               int plazo,
-               decimal interesAnual,
-               DateTime fechaInicio,
-               DateTime fechaVencimiento)
-        {
-            conexion.InsertarFiduciario(ventaID, montoTotal, montoPagado, estado, montoFinanciado, cuotasMensuales, plazo, interesAnual, fechaInicio, fechaVencimiento);
-        }*/
-           
-        
+        /*  public static void InsertarMetodoFiduciario(int ventaID,
+                 decimal montoTotal,
+                 decimal montoPagado,
+                 string estado,
+                 decimal montoFinanciado,
+                 decimal cuotasMensuales,
+                 int plazo,
+                 decimal interesAnual,
+                 DateTime fechaInicio,
+                 DateTime fechaVencimiento)
+          {
+              conexion.InsertarFiduciario(ventaID, montoTotal, montoPagado, estado, montoFinanciado, cuotasMensuales, plazo, interesAnual, fechaInicio, fechaVencimiento);
+          }*/
+
+
 
 
         public static void InsertarVenta()
@@ -233,31 +234,16 @@ namespace capaNegocio
             conexion.InsertarPagoContado(ventaID, tipoMetodo, fechaPago, montoTotal);
         }
 
-        public static void InsertarMetodoPagoLayaway(int ventaID,
-    string tipoMetodo,
-    DateTime fechaInicio,
-    DateTime fechaFinal,
-    decimal montoTotal,
-    decimal montoInicial,
-    decimal montoPagado,
-    string estado,
-    string pagosPeriodicos)
+        public static void InsertarMetodoPagoLayaway(int ventaID, string tipoMetodo, DateTime fechaInicio, DateTime fechaFinal,
+            decimal montoTotal, decimal montoInicial, decimal montoPagado, string estado, string pagosPeriodicos)
         {
             conexion.InsertarLayaway(ventaID, tipoMetodo, fechaInicio, fechaFinal,
                                      montoTotal, montoInicial, montoPagado,
                                      estado, pagosPeriodicos);
         }
 
-        public static void InsertarMetodoPagoFiduciario(int ventaID,
-    decimal montoTotal,
-    decimal montoPagado,
-    string estado,
-    decimal montoFinanciado,
-    decimal cuotasMensuales,
-    int plazo,
-    decimal interesAnual,
-    DateTime fechaInicio,
-    DateTime fechaVencimiento)
+        public static void InsertarMetodoPagoFiduciario(int ventaID,decimal montoTotal, decimal montoPagado, string estado, decimal montoFinanciado,
+            decimal cuotasMensuales, int plazo, decimal interesAnual, DateTime fechaInicio, DateTime fechaVencimiento)
         {
             conexion.InsertarFiduciario(ventaID, montoTotal, montoPagado, estado,
                                         montoFinanciado, cuotasMensuales, plazo,
@@ -266,6 +252,22 @@ namespace capaNegocio
 
 
     }
+    public class Pagos
+    {
+        public  DataTable ObtenerVenta(int ventaID)
+        {
+            return conexion.ObtenerVentaPorID(ventaID);
+        }
 
+
+        public static void InsertarPago(int ventaID, decimal montoPagado, decimal mora,
+                               decimal montoPendiente, string fechaPago, string metodoPago)
+        {
+            conexion.InsertarPago(ventaID, montoPagado, mora, montoPendiente, fechaPago, metodoPago);
+        }
+
+
+    }   
 
 }
+

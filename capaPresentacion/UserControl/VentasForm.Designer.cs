@@ -201,6 +201,7 @@
             txtClienteId.ShadowDecoration.CustomizableEdges = customizableEdges6;
             txtClienteId.Size = new Size(113, 30);
             txtClienteId.TabIndex = 16;
+            txtClienteId.TextChanged += txtClienteId_TextChanged;
             // 
             // label2
             // 

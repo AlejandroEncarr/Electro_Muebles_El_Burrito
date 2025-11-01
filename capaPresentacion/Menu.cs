@@ -163,7 +163,7 @@ namespace capaPresentacion
         private void guna2Button18_Click(object sender, EventArgs e)
         {
             VentasForm ventass = new VentasForm();
-         
+
             AddUserControl(ventass);
         }
 
@@ -181,6 +181,13 @@ namespace capaPresentacion
         {
             txtInteres contrato = new txtInteres();
             contrato.Show();
+        }
+
+        private void guna2Button12_Click(object sender, EventArgs e)
+        {
+            pagooo pago = new pagooo();
+
+            AddUserControl(pago);
         }
     }
 }

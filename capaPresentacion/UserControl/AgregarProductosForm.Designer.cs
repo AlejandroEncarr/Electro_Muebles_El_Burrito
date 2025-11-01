@@ -32,8 +32,6 @@
             label1 = new Label();
             txtNombre = new TextBox();
             label2 = new Label();
-            txtStock = new TextBox();
-            label3 = new Label();
             txtPrecio = new TextBox();
             label4 = new Label();
             txtNumeroSerie = new TextBox();
@@ -93,26 +91,6 @@
             label2.Size = new Size(84, 23);
             label2.TabIndex = 2;
             label2.Text = "Categoria";
-            // 
-            // txtStock
-            // 
-            txtStock.ForeColor = SystemColors.ActiveCaptionText;
-            txtStock.Location = new Point(36, 316);
-            txtStock.Name = "txtStock";
-            txtStock.Size = new Size(170, 27);
-            txtStock.TabIndex = 7;
-            txtStock.TextChanged += txtStock_TextChanged;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.ForeColor = SystemColors.ControlLightLight;
-            label3.Location = new Point(36, 293);
-            label3.Name = "label3";
-            label3.Size = new Size(52, 23);
-            label3.TabIndex = 6;
-            label3.Text = "Stock";
             // 
             // txtPrecio
             // 
@@ -212,7 +190,7 @@
             // txtGarantia
             // 
             txtGarantia.ForeColor = SystemColors.ActiveCaptionText;
-            txtGarantia.Location = new Point(34, 370);
+            txtGarantia.Location = new Point(34, 316);
             txtGarantia.Multiline = true;
             txtGarantia.Name = "txtGarantia";
             txtGarantia.Size = new Size(170, 27);
@@ -223,7 +201,7 @@
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label9.ForeColor = SystemColors.ControlLightLight;
-            label9.Location = new Point(34, 347);
+            label9.Location = new Point(34, 293);
             label9.Name = "label9";
             label9.Size = new Size(75, 23);
             label9.TabIndex = 18;
@@ -232,7 +210,7 @@
             // txtCaracteristicas
             // 
             txtCaracteristicas.ForeColor = SystemColors.ActiveCaptionText;
-            txtCaracteristicas.Location = new Point(36, 437);
+            txtCaracteristicas.Location = new Point(36, 381);
             txtCaracteristicas.Multiline = true;
             txtCaracteristicas.Name = "txtCaracteristicas";
             txtCaracteristicas.Size = new Size(378, 74);
@@ -243,7 +221,7 @@
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label10.ForeColor = SystemColors.ControlLightLight;
-            label10.Location = new Point(34, 411);
+            label10.Location = new Point(34, 355);
             label10.Name = "label10";
             label10.Size = new Size(119, 23);
             label10.TabIndex = 16;
@@ -273,9 +251,7 @@
             panel1.Controls.Add(label7);
             panel1.Controls.Add(txtPrecio);
             panel1.Controls.Add(txtMarca);
-            panel1.Controls.Add(label3);
             panel1.Controls.Add(label8);
-            panel1.Controls.Add(txtStock);
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(453, 611);
@@ -287,7 +263,7 @@
             Estado.AutoSize = true;
             Estado.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Estado.ForeColor = SystemColors.ControlLightLight;
-            Estado.Location = new Point(244, 370);
+            Estado.Location = new Point(36, 461);
             Estado.Name = "Estado";
             Estado.Size = new Size(85, 27);
             Estado.TabIndex = 23;
@@ -386,8 +362,6 @@
         private Label label1;
         private TextBox txtNombre;
         private Label label2;
-        private TextBox txtStock;
-        private Label label3;
         private TextBox txtPrecio;
         private Label label4;
         private TextBox txtNumeroSerie;

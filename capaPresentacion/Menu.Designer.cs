@@ -549,6 +549,7 @@
             guna2Button12.Size = new Size(225, 56);
             guna2Button12.TabIndex = 9;
             guna2Button12.Text = "Pagos";
+            guna2Button12.Click += guna2Button12_Click;
             // 
             // pCliente
             // 

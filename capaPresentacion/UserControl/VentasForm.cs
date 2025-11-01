@@ -344,5 +344,10 @@ namespace capaPresentacion.UserControl
 
 
         }
+
+        private void txtClienteId_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
